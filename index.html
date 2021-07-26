@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/25/hello-world/">Hello World init</a>
+      <a class="article-title" href="/2021/07/25/hello-world/">Vue 面试题</a>
     </h1>
   
 
@@ -86,24 +86,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h2 id="vue-基础"><a href="#vue-基础" class="headerlink" title="vue 基础"></a>vue 基础</h2><ol>
+<li><p><code>v-if</code> and <code>v-show</code>, 场景</p>
+</li>
+<li><p><code>v-for</code> 为何要用<code>key</code></p>
+</li>
+<li><p>vue 组件生命周期(有父子组件的情况下)</p>
+</li>
+<li><p>组件通讯：<code>props/$on/$emit</code>, <code>new Vue().$emit/on/off</code></p>
+</li>
+<li><p>组件渲染和更新的过程</p>
+</li>
+<li><p>vue 事件 和 react 事件</p>
+</li>
+<li><p><code>v-model</code> 实现原理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// in comp</span></span><br><span class="line"><span class="attr">model</span>: &#123;</span><br><span class="line">  <span class="attr">prop</span>: checkedValue,</span><br><span class="line">  <span class="attr">event</span>: changeEvent</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>$nextTick()</code> 和 <code>refs</code></p>
+</li>
+<li><p>slot 作用域 slot</p>
+</li>
+<li><p>动态/异步 组件</p>
+<ul>
+<li><code>&lt;component :is=&quot;compName&quot;&gt;</code></li>
+<li>异步组件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">components: &#123;</span><br><span class="line">  <span class="string">&#x27;my-comp&#x27;</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./async-comp.vue&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><code>keep-alive</code></p>
+</li>
+<li><p>mixin</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckriykrkj00000owpacsd2nvw" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrkny8xo00006wwph78ra1pe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +161,7 @@
       <ul>
         
           <li>
-            <a href="/2021/07/25/hello-world/">Hello World init</a>
+            <a href="/2021/07/25/hello-world/">Vue 面试题</a>
           </li>
         
       </ul>
