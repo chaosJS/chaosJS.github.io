@@ -114,13 +114,45 @@
 <li><p><code>keep-alive</code></p>
 </li>
 <li><p>mixin</p>
+<ol>
+<li>变量来源不明确</li>
+<li>多个 mixin 数据可能会有冲突</li>
+<li>多对多复杂度高</li>
+</ol>
 </li>
+</ol>
+<h2 id="vuex-vue-router"><a href="#vuex-vue-router" class="headerlink" title="vuex / vue-router"></a>vuex / vue-router</h2><ol>
+<li>histoty/hash</li>
+<li>动态路由/参数配置/懒加载</li>
+<li>…</li>
+</ol>
+<h2 id="原理相关"><a href="#原理相关" class="headerlink" title="原理相关"></a>原理相关</h2><ol>
+<li>组件化</li>
+<li>响应式，数据驱动视图 <code>Object.defineProperty</code><ol>
+<li>深度监听需要递归到底，一次性计算量大</li>
+<li>无法监听新增/删除属性 需要使用 Vue.set 和 Vue.delete</li>
+<li>没有监听原生数组的方法，做了特殊处理</li>
+</ol>
+</li>
+<li>vdom 和 diff<ol>
+<li>只比较同级</li>
+<li>tagName 不同，直接删除新建，不比较</li>
+<li>同级节点则根据 key 做比较<ul>
+<li>oldStartIndex/oldEndIndex</li>
+<li>newStartIndex/newEndIndex</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>模板编译</li>
+<li>渲染过程</li>
+<li>前端路由</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrkny8xo00006wwph78ra1pe" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrm0zenk0000efwp6srefa3m" class="article-share-link">Share</a>
       
       
     </footer>
