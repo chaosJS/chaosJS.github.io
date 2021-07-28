@@ -127,14 +127,17 @@
 <li>…</li>
 </ol>
 <h2 id="原理相关"><a href="#原理相关" class="headerlink" title="原理相关"></a>原理相关</h2><ol>
-<li>组件化</li>
-<li>响应式，数据驱动视图 <code>Object.defineProperty</code><ol>
+<li><p>组件化</p>
+</li>
+<li><p>响应式，数据驱动视图 <code>Object.defineProperty</code></p>
+<ol>
 <li>深度监听需要递归到底，一次性计算量大</li>
 <li>无法监听新增/删除属性 需要使用 Vue.set 和 Vue.delete</li>
 <li>没有监听原生数组的方法，做了特殊处理</li>
 </ol>
 </li>
-<li>vdom 和 diff<ol>
+<li><p>vdom 和 diff</p>
+<ol>
 <li>只比较同级</li>
 <li>tagName 不同，直接删除新建，不比较</li>
 <li>同级节点则根据 key 做比较<ul>
@@ -144,15 +147,33 @@
 </li>
 </ol>
 </li>
-<li>模板编译</li>
-<li>渲染过程</li>
-<li>前端路由</li>
+<li><p>模板编译</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> compiler = <span class="built_in">require</span>(<span class="string">&#x27;vue-template-compiler&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> template = <span class="string">`&lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;/p&gt;`</span>;</span><br><span class="line"><span class="keyword">const</span> res = compiler.compile(template);</span><br><span class="line"><span class="built_in">console</span>.log(res.render);</span><br><span class="line"><span class="comment">// with(this)&#123; return _c(&#x27;p&#x27;, [_v(_s(msg))]) &#125;</span></span><br><span class="line"><span class="comment">// _c = createElement</span></span><br><span class="line"><span class="comment">// _v = createTextVNode</span></span><br><span class="line"><span class="comment">// _s = toString</span></span><br><span class="line"><span class="keyword">const</span> template1 = <span class="string">`&lt;div id=&quot;div1&quot; class=&quot;container&quot;&gt;</span></span><br><span class="line"><span class="string">                     &lt;img :src=&quot;imgUrl&quot; /&gt;</span></span><br><span class="line"><span class="string">                   &lt;/div&gt;`</span>;</span><br><span class="line"><span class="keyword">with</span> (<span class="built_in">this</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> _c(<span class="string">&#x27;div&#x27;</span>, &#123; <span class="attr">staticClass</span>: <span class="string">&#x27;container&#x27;</span>, <span class="attr">attrs</span>: &#123; <span class="attr">id</span>: <span class="string">&#x27;div1&#x27;</span> &#125; &#125;, [</span><br><span class="line">    _c(<span class="string">&#x27;img&#x27;</span>, &#123; <span class="attr">attrs</span>: &#123; <span class="attr">src</span>: imgUrl &#125; &#125;),</span><br><span class="line">  ]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// v-if/v-for 都差不多</span></span><br><span class="line"><span class="comment">// 事件</span></span><br><span class="line"><span class="keyword">const</span> template2 = <span class="string">`&lt;button @click=&quot;handleClick&quot;&gt;click&lt;/button&gt;`</span>;</span><br><span class="line"><span class="function"><span class="title">with</span>(<span class="params"><span class="built_in">this</span></span>)</span>&#123; <span class="keyword">return</span> _c(<span class="string">&#x27;button&#x27;</span>,&#123;<span class="attr">on</span>: &#123;<span class="string">&quot;click&quot;</span>,handleClick&#125;&#125;, [_v(<span class="string">&quot;click&quot;</span>)]) &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>渲染过程</p>
+</li>
+<li><p>前端路由</p>
+<ol>
+<li><p>hash</p>
+<ol>
+<li>导致浏览器的前进后退</li>
+<li>不刷新页面</li>
+<li>核心：监听 <code>window.onhashchange</code></li>
+</ol>
+</li>
+<li><p>history 模式</p>
+<ol>
+<li><code>history.pushState</code> 打开一个新的路由</li>
+<li><code>window.onpopstate</code> 监听浏览器前进后退<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">history.pushState(&#123; <span class="attr">name</span>: <span class="string">&#x27;page2&#x27;</span> &#125;, <span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;page2&#x27;</span>);</span><br><span class="line"><span class="built_in">window</span>.onpopstate = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.state, location.pathname);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrm0zenk0000efwp6srefa3m" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrneg6gy0000cdwp321n4bdv" class="article-share-link">Share</a>
       
       
     </footer>
