@@ -15,7 +15,7 @@
 <meta property="og:description" content="vue 基础 v-if and v-show, 场景  v-for 为何要用key  vue 组件生命周期(有父子组件的情况下)  组件通讯：props&#x2F;$on&#x2F;$emit, new Vue().$emit&#x2F;on&#x2F;off  组件渲染和更新的过程  vue 事件 和 react 事件  v-model 实现原理 12345 &#x2F;&#x2F; in compmodel: &amp;#123;  prop: checked">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-25T07:16:09.614Z">
-<meta property="article:modified_time" content="2021-07-28T09:50:21.530Z">
+<meta property="article:modified_time" content="2021-07-29T11:13:11.751Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -171,11 +171,18 @@
 </ol>
 </li>
 </ol>
+<h2 id="vue3"><a href="#vue3" class="headerlink" title="vue3"></a>vue3</h2><ol>
+<li><p>Proxy/Reflect</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;lc&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> proxyData = <span class="keyword">new</span> <span class="built_in">Proxy</span>(data, &#123;</span><br><span class="line">  <span class="comment">// reciever 指向 proxyData本身</span></span><br><span class="line">  <span class="function"><span class="title">get</span>(<span class="params">target, key, reciever</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="built_in">Reflect</span>.get(target, key, reciever);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;get&#x27;</span>, target, key, reciever);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;？？？&#x27;</span>, proxyData === reciever, target === data); <span class="comment">// true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;res::&#x27;</span>, res); <span class="comment">// key</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">set</span>(<span class="params">target, key, val, reciever</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="built_in">Reflect</span>.set(target, key, val, reciever);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;set&#x27;</span>, key, val);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;set res&#x27;</span>, res);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">deleteProperty</span>(<span class="params">target, key</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="built_in">Reflect</span>.deleteProperty(target, key);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;deleteProperty&#x27;</span>, target, key);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="汇总"><a href="#汇总" class="headerlink" title="汇总"></a>汇总</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://vue3js.cn/">vue3js</a></li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrnehxg80000etwp8wf18kaq" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrotjg6y0000dswp64c08ix1" class="article-share-link">Share</a>
       
       
     </footer>
