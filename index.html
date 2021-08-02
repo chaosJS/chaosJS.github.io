@@ -171,12 +171,23 @@
 </li>
 <li><p><code>useEffect()</code></p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 依赖为空数组，只执行一次，则等同于componentWillUnmount</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;清除操作&#x27;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, []);</span><br><span class="line">useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 无依赖或者存在依赖列表[a, b]，组件更新时也会执行清除操作</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;清除操作&#x27;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, [a, b]);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>useMemo</code>缓存数据，<code>useCallback</code>缓存函数</p>
+</li>
+<li><p>自定义 hooks</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> useAxios = <span class="function">(<span class="params">url</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [loading, setLoading] = useState(<span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">const</span> [data, setData] = useState(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> [error, setError] = useState(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    axios</span><br><span class="line">      .get(url)</span><br><span class="line">      .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        setData(res.data);</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        setError(err);</span><br><span class="line">      &#125;)</span><br><span class="line">      .finally(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        setLoading(<span class="literal">false</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;, [url]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> [loading, data, error];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> useAxios;</span><br></pre></td></tr></table></figure></li>
+<li><p>规范</p>
+<ol>
+<li>只在函数组件和自定义 hook 中使用</li>
+<li>只在顶层代码中使用，不能在循环判断中使用</li>
+<li>函数组件执行完就销毁，无论是初始化还是组件更新， 都会重新执行函数，获取最新的组件。这一点和 class 组件不一样</li>
+</ol>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/29/React-%E7%9B%B8%E5%85%B3/" data-id="ckrt6burc000081wpeagfb0jz" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/29/React-%E7%9B%B8%E5%85%B3/" data-id="ckrukllq60000irwphr951tch" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrt6burl000181wp9z7x4ho5" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckrukllqb0001irwp9wdrax53" class="article-share-link">Share</a>
       
       
     </footer>
