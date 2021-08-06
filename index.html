@@ -175,19 +175,41 @@
 </ol>
 </li>
 </ol>
-<h2 id="原理流程"><a href="#原理流程" class="headerlink" title="原理流程"></a>原理流程</h2><h2 id="babel-相关"><a href="#babel-相关" class="headerlink" title="babel 相关"></a>babel 相关</h2><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ol>
-<li>为何要构建打包</li>
-<li>module/chunk/bundle</li>
+<h2 id="原理流程"><a href="#原理流程" class="headerlink" title="原理流程"></a>原理流程</h2><h2 id="babel-相关"><a href="#babel-相关" class="headerlink" title="babel 相关"></a>babel 相关</h2><ol>
+<li><p>基本</p>
+<ol>
+<li><p>presets/plugins</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .babelrc</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 预设 presets 把常用的plugin 打一个包成为@babel/preset-env</span></span><br><span class="line">  <span class="attr">&quot;presets&quot;</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">&quot;@babel/preset-env&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">// 按需引入corejs的部分功能</span></span><br><span class="line">        <span class="attr">&quot;useBuiltIns&quot;</span>: <span class="string">&quot;useage&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;corejs&quot;</span>: <span class="number">3</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 不满足需要的再去扩展plugins</span></span><br><span class="line">  <span class="attr">&quot;plugins&quot;</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="comment">// babel-runtime配置</span></span><br><span class="line">      <span class="string">&quot;@babel/plugin-transform-runtime&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;absoluteRuntime&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">&quot;corejs&quot;</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">&quot;helpers&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;regenerator&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;useESModules&quot;</span>: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>@babel-polyfill （现以弃用，推荐直接使用 core-js/regerneator ）</p>
+<ol>
+<li>polyfill 新语法的补丁/兼容性。是 core-js/regerneator 的集合</li>
+<li>core-js/regerneator。 core-js 暂不支持 generator 语法，需要用 regenerator 支持</li>
+<li>按需引入@babel-polyfill</li>
+<li>存在污染全局变量的问题，在做 lib 可能有出现冲突的危险</li>
+</ol>
+</li>
+<li><p>babel-runtime</p>
+<ol>
+<li>配置使用 babel-runtime 在转换期间会做处理，不会污染全局变量</li>
+<li>其他人使用不会有副作用</li>
+</ol>
+</li>
+</ol>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ol>
+<li>为何要构建打包<ol>
+<li>代码体积/高级代码/兼容性/错误检查</li>
+<li>统一的开发环境/构建流程/产出标准</li>
+</ol>
+</li>
 <li>loader/plugin</li>
-<li>webpack 懒加载</li>
-<li>常见优化</li>
-<li>babel-runtime/babel-polyfill</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/04/webpack-%E7%9B%B8%E5%85%B3/" data-id="ckryqjw7700025qwp8vbdhcgp" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/08/04/webpack-%E7%9B%B8%E5%85%B3/" data-id="cks0agt5c0000qfwp0sjwbqkw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -320,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/29/React-%E7%9B%B8%E5%85%B3/" data-id="ckryqjw6z00005qwp5s2sahh3" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/29/React-%E7%9B%B8%E5%85%B3/" data-id="cks0agt5h0001qfwp2u4rdvp4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -446,7 +468,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="ckryqjw7400015qwpg8pw9v79" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/25/hello-world/" data-id="cks0agt5j0002qfwp9lc15q3u" class="article-share-link">Share</a>
       
       
     </footer>
