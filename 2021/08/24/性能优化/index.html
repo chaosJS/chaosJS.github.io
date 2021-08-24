@@ -5,17 +5,17 @@
   
 
   
-  <title>vite 相关 | Hexo</title>
+  <title>性能优化 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vite 基础 冷服务启动 开发中热更新 按需编译，不刷新全部 DOM">
+  <meta name="description" content="静态资源优化 html&#x2F;css&#x2F;js&#x2F;img&#x2F;font&#x2F;… 图片优化 图片格式的选用 jpg：色彩&#x2F;焦点图&#x2F;banner 等对质量要求较高的场景 png：纯色&#x2F;透明&#x2F;图标&#x2F;等颜色较少的场景 gif：动画&#x2F;图标之类 webp：图形&#x2F;半透明图像   压缩，各种压缩工具的使用 不同环境设备下展示不同的图片尺寸&#x2F;规格 lqip&#x2F;sqip 逐步加载图像     html 减少嵌套&#x2F;DOM 节点数 css&#x2F;j">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vite 相关">
-<meta property="og:url" content="http://example.com/2021/08/07/vite-%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:title" content="性能优化">
+<meta property="og:url" content="http://example.com/2021/08/24/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="vite 基础 冷服务启动 开发中热更新 按需编译，不刷新全部 DOM">
+<meta property="og:description" content="静态资源优化 html&#x2F;css&#x2F;js&#x2F;img&#x2F;font&#x2F;… 图片优化 图片格式的选用 jpg：色彩&#x2F;焦点图&#x2F;banner 等对质量要求较高的场景 png：纯色&#x2F;透明&#x2F;图标&#x2F;等颜色较少的场景 gif：动画&#x2F;图标之类 webp：图形&#x2F;半透明图像   压缩，各种压缩工具的使用 不同环境设备下展示不同的图片尺寸&#x2F;规格 lqip&#x2F;sqip 逐步加载图像     html 减少嵌套&#x2F;DOM 节点数 css&#x2F;j">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-08-07T07:39:00.000Z">
-<meta property="article:modified_time" content="2021-08-07T07:42:17.963Z">
+<meta property="article:published_time" content="2021-08-24T13:50:46.000Z">
+<meta property="article:modified_time" content="2021-08-24T15:23:43.775Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-vite-相关" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-性能优化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/08/07/vite-%E7%9B%B8%E5%85%B3/" class="article-date">
-  <time datetime="2021-08-07T07:39:00.000Z" itemprop="datePublished">2021-08-07</time>
+    <a href="/2021/08/24/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="article-date">
+  <time datetime="2021-08-24T13:50:46.000Z" itemprop="datePublished">2021-08-24</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vite 相关
+      性能优化
     </h1>
   
 
@@ -88,16 +88,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="vite-基础"><a href="#vite-基础" class="headerlink" title="vite 基础"></a>vite 基础</h2><ol>
-<li>冷服务启动</li>
-<li>开发中热更新</li>
-<li>按需编译，不刷新全部 DOM</li>
+        <h3 id="静态资源优化"><a href="#静态资源优化" class="headerlink" title="静态资源优化"></a>静态资源优化</h3><ol>
+<li>html/css/js/img/font/…</li>
+<li>图片优化<ol>
+<li>图片格式的选用<ol>
+<li>jpg：色彩/焦点图/banner 等对质量要求较高的场景</li>
+<li>png：纯色/透明/图标/等颜色较少的场景</li>
+<li>gif：动画/图标之类</li>
+<li>webp：图形/半透明图像</li>
 </ol>
-
+</li>
+<li>压缩，各种压缩工具的使用</li>
+<li>不同环境设备下展示不同的图片尺寸/规格<ol>
+<li>lqip/sqip 逐步加载图像</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>html<ol>
+<li>减少嵌套/DOM 节点数</li>
+<li>css/js 文件的位置</li>
+</ol>
+</li>
+<li>css<ol>
+<li>少使用 expensive 属性</li>
+<li>减少层级</li>
+<li>减少通配符/正则属性选择器等</li>
+<li>避免使用 @import</li>
+</ol>
+</li>
+<li>js (需要时才优化/必须考虑可维护可读性)<ol>
+<li>函数保持简洁</li>
+<li>事件节流/防抖</li>
+<li>事件委托</li>
+<li>合理缓存 dom 对象/列表长度/</li>
+</ol>
+</li>
+<li>localstorage 缓存静态资源 js/css</li>
+</ol>
+<h3 id="页面渲染架构设计和方案选型"><a href="#页面渲染架构设计和方案选型" class="headerlink" title="页面渲染架构设计和方案选型"></a>页面渲染架构设计和方案选型</h3><h3 id="原生-app-优化方案"><a href="#原生-app-优化方案" class="headerlink" title="原生 app 优化方案"></a>原生 app 优化方案</h3><h3 id="服务端和网络优化"><a href="#服务端和网络优化" class="headerlink" title="服务端和网络优化"></a>服务端和网络优化</h3><h3 id="开发流程优化"><a href="#开发流程优化" class="headerlink" title="开发流程优化"></a>开发流程优化</h3><h3 id="质量监控体系建设"><a href="#质量监控体系建设" class="headerlink" title="质量监控体系建设"></a>质量监控体系建设</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/07/vite-%E7%9B%B8%E5%85%B3/" data-id="cksq7ys8m0002z9wp3w4hftpd" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/08/24/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" data-id="cksq7ys8p0004z9wp4ur6gjyq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -106,19 +139,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/08/24/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          性能优化
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/08/04/webpack-%E7%9B%B8%E5%85%B3/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/08/07/vite-%E7%9B%B8%E5%85%B3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">webpack 相关</div>
+      <div class="article-nav-title">vite 相关</div>
     </a>
   
 </nav>
