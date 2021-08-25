@@ -15,7 +15,7 @@
 <meta property="og:description" content="静态资源优化 html&#x2F;css&#x2F;js&#x2F;img&#x2F;font&#x2F;… 图片优化 图片格式的选用 jpg：色彩&#x2F;焦点图&#x2F;banner 等对质量要求较高的场景 png：纯色&#x2F;透明&#x2F;图标&#x2F;等颜色较少的场景 gif：动画&#x2F;图标之类 webp：图形&#x2F;半透明图像   压缩，各种压缩工具的使用 不同环境设备下展示不同的图片尺寸&#x2F;规格 lqip&#x2F;sqip 逐步加载图像     html 减少嵌套&#x2F;DOM 节点数 css&#x2F;j">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-24T13:50:46.000Z">
-<meta property="article:modified_time" content="2021-08-24T15:23:43.775Z">
+<meta property="article:modified_time" content="2021-08-25T09:58:54.350Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -126,11 +126,38 @@
 </li>
 <li>localstorage 缓存静态资源 js/css</li>
 </ol>
-<h3 id="页面渲染架构设计和方案选型"><a href="#页面渲染架构设计和方案选型" class="headerlink" title="页面渲染架构设计和方案选型"></a>页面渲染架构设计和方案选型</h3><h3 id="原生-app-优化方案"><a href="#原生-app-优化方案" class="headerlink" title="原生 app 优化方案"></a>原生 app 优化方案</h3><h3 id="服务端和网络优化"><a href="#服务端和网络优化" class="headerlink" title="服务端和网络优化"></a>服务端和网络优化</h3><h3 id="开发流程优化"><a href="#开发流程优化" class="headerlink" title="开发流程优化"></a>开发流程优化</h3><h3 id="质量监控体系建设"><a href="#质量监控体系建设" class="headerlink" title="质量监控体系建设"></a>质量监控体系建设</h3>
+<h3 id="页面渲染架构设计和方案选型"><a href="#页面渲染架构设计和方案选型" class="headerlink" title="页面渲染架构设计和方案选型"></a>页面渲染架构设计和方案选型</h3><ol>
+<li>懒加载，通常是图片</li>
+<li>预加载，preload js/css 文件</li>
+<li>按需加载 react/vue</li>
+<li>接口服务优化<ol>
+<li>多个接口合并</li>
+<li>axios 请求接口数据并缓存</li>
+</ol>
+</li>
+</ol>
+<h3 id="服务端和网络优化"><a href="#服务端和网络优化" class="headerlink" title="服务端和网络优化"></a>服务端和网络优化</h3><ol>
+<li>上 CDN 缓存</li>
+<li>DNS 优化预解析<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;x-dns-prefetch-control&quot;</span> <span class="attr">content</span>=<span class="string">&quot;on&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;dns-prefetch&quot;</span> <span class="attr">href</span>=<span class="string">&quot;//ha.aa.bb&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>减少 HTTP 请求数</li>
+<li>减少 Cookie 大小</li>
+<li>服务器压缩缓存配置<ol>
+<li>expire/cache-control</li>
+<li>e-tag:If-Non-Match /Last-modified:Last-Modified-Since</li>
+<li>nginx 配置 gzip 压缩</li>
+</ol>
+</li>
+<li>https/http2</li>
+</ol>
+<h3 id="开发流程优化"><a href="#开发流程优化" class="headerlink" title="开发流程优化"></a>开发流程优化</h3><ol>
+<li>自动化部署</li>
+<li>提升团队整体的代码质量</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/24/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" data-id="cksq8kbw000035uwp51rde2vi" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/08/24/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" data-id="cksrfgpi60002a6wpg6zcc97j" class="article-share-link">Share</a>
       
       
     </footer>
